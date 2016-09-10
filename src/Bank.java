@@ -3,15 +3,15 @@ import java.util.HashMap;
 /**
  * Created by joshuakeough on 9/10/16.
  */
-public class Account {
-    private int balance;
+public class Bank {
+    private double balance;
     private String name;
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -23,19 +23,17 @@ public class Account {
         this.name = name;
     }
 
-    public HashMap<String, Integer> members = new HashMap<>();
+    public HashMap<String, Double> members = new HashMap<>();
 
 
 
 
-    public void newMember() {
-        String memberName;
+    public void acceptNewMember() {
         System.out.println("Please enter your first name.");
-        memberName = Main.scanner.nextLine();
+        name = Main.scanner.nextLine();
         System.out.println("Lets make a deposit! Please enter an amount.");
         balance = Integer.parseInt(Main.scanner.nextLine());
-        name = memberName;
-        members.put(memberName, balance);
+        members.put(this.name, balance);
     }
 
     public void user() {
@@ -48,8 +46,8 @@ public class Account {
             balance = members.get(name);
 
         } else {
-            System.out.println("Ok it seems you do not have an account. Lets set one up!");
-            newMember();
+            System.out.println("Ok it seems you do not have an bank. Lets set one up!");
+            acceptNewMember();
 
         }
     }
