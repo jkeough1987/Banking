@@ -52,4 +52,53 @@ public class Bank {
         }
     }
 
+    public  void balance() {
+        boolean a = true;
+        while (a) {
+            System.out.println("Your Balance is $" + members.get(getName()));
+            a = false;
+        }
+
+
+    }
+
+    public  void delete() {
+        boolean a = true;
+        while (a) {
+            members.remove(getName());
+            a = false;
+            user();
+        }
+
+
+    }
+
+    public void withdraw() {
+        boolean a = true;
+        while (a) {
+            System.out.println("How much would you like to withdraw?");
+            double withdrawal;
+            withdrawal = Integer.parseInt(Main.scanner.nextLine());
+            if (withdrawal <= members.get(getName())) {
+                double withdraw = members.get(getName()) - withdrawal;
+                setBalance(withdraw);
+                System.out.println("Thanks please take your cash. Your remaining balance is $" + getBalance());
+                a = false;
+                members.put(getName(), getBalance());
+            } else if (withdrawal > members.get(getName())) {
+                System.out.println("Sorry funds not available please try again.");
+            }
+            a = false;
+        }
+
+    }
+
+    public void deposit() throws NullPointerException {
+        System.out.println("How much would you like to deposit?");
+        double deposit = Integer.parseInt(Main.scanner.nextLine()) + members.get(getName());
+        System.out.println("Your money has been deposited!");
+        members.put(getName(), deposit);
+
+    }
+
 }
